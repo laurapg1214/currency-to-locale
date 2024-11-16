@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Converts currency codes to locale identifiers following format specified in IETF BCP 47 standard",
   "main": "index.js",
+  "exports": {
+    "require": "./index.cjs",
+    "default": "./index.mjs"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/laurapg1214/currency-to-locale.git"
