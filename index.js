@@ -4,11 +4,8 @@ const currencyToLocale = (currencyCode, language) => {
     return "Please provide a currency code.";
   };
 
-  currencyCode = currencyCode.toUpperCase();
-
-  if (language) {
-    language = language.toLowerCase();
-  };
+  // ensure correct formatting
+  currencyCode = currencyCode.toString().toUpperCase();
   
   const currencyLocales = {
     "AUD": "en_AU",
@@ -45,6 +42,8 @@ const currencyToLocale = (currencyCode, language) => {
   };
 
   if (language) {
+    // ensure correct formatting
+    language = language.toString().toLowerCase();
     // loop through currencyLocales object
     for (const key in currencyLocales) {
       // check for values that are multi-value arrays
@@ -63,7 +62,7 @@ const currencyToLocale = (currencyCode, language) => {
               return localeID;
             }
           }
-          return (`Language not found for ${currencyCode}`);
+          return (`Language not found for ${currencyCode}.`);
         }
       }
     }

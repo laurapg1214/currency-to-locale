@@ -1,39 +1,89 @@
 const currencyToLocale = require('../index.js');  
 
-// standard currency code no multiple languages
-console.log(currencyToLocale('USD')); // returns 'en_US'
+// valid currency code with no multiple languages
+console.assert(
+  currencyToLocale('USD') === 'en_US',
+  "Expected 'en_US' for USD"
+);
 
-// testing multiple languages CHF & EUR
-console.log(currencyToLocale('CHF', 'fr')); // returns 'fr_CH' (for French Swiss Franc)
-console.log(currencyToLocale('EUR', 'es')); // returns 'es_ES' (for Spanish Euro)
+// valid currency code with multiple languages
+console.assert(
+  currencyToLocale('CHF', 'fr') === 'fr_CH',
+  "Expected 'fr_CH for CHF, fr"
+); 
 
-// currency code with lang provided but irrelevant
-console.log(currencyToLocale('AUD', 'en')); // returns 'en_AU'
+console.assert(
+    currencyToLocale('EUR', 'es') === 'es_ES',
+    "Expected 'es_ES' for EUR, es"
+); 
 
-// currency code with irrelevant and invalid language
-console.log(currencyToLocale('USD', 'cat')); // returns 'en_US'
+// valid currency code, irrelevant language
+console.assert(
+  currencyToLocale('AUD', 'en') === 'en_AU',
+  "Expected 'en_AU' for AUD, en"
+); 
 
-// currency code not in mapping
-console.log(currencyToLocale('ACAT')); // returns 'Currency code not found.'
+// valid currency code, irrelevant & invalid/nonexistent language
+console.assert(
+  currencyToLocale('USD', 'cat') === 'en_US',
+  "Expected 'en_US' for USD, cat"
+);
 
-// number entered for currency code
-//console.log(currencyToLocale(1)); // returns 'Currency code not found.'
+// invalid/nonexistent currency code
+console.assert(
+  currencyToLocale('ACAT') === 'Currency code not found.',
+  "Expected 'Currency code not found.' for ACAT"
+);
 
-// number entered for language
-//console.log(currencyToLocale('EUR', 1)); // returns 'Language not found for EUR.'
+// invalid currency code type (number)
+console.assert(
+  currencyToLocale(1) === 'Currency code not found.',
+  "Expected 'Currency code not found' for 1"
+); 
 
-// language for CHF/EUR not in mapping
-console.log(currencyToLocale('CHF', 'cat')); // returns 'Language not found for CHF.'
-console.log(currencyToLocale('EUR', 'cat')); // returns 'Language not found for EUR.'
+// invalid currency code type (number), valid language
+console.assert(
+  currencyToLocale(1, 'fr') === 'Currency code not found.',
+  "Expected 'Currency code not found.' for 1, fr"
+); 
 
-// lowercase currency code
-console.log(currencyToLocale('usd')); // returns 'en_US'
+// valid currency code, invalid language type (number)
+console.assert(
+  currencyToLocale('EUR', 1) === 'Language not found for EUR.',
+  "Expected 'Language not found for EUR' for EUR, 1"
+); 
 
-// uppercase language
-console.log(currencyToLocale('EUR', 'fr')); // returns 'fr_FR' (for Spanish Euro)
+// valid currency code, nonexistent/invalid language
+console.assert(
+  currencyToLocale('CHF', 'cat') === 'Language not found for CHF.',
+  "Expected 'Language not found for CHF.' for CHF, cat"
+); 
 
-// lowercase currency code & uppercase language
-console.log(currencyToLocale('chf', 'IT')); // returns 'it_CH' (for Italian Swiss Franc)
+console.assert(
+  currencyToLocale('EUR', 'cat') === 'Language not found for EUR.',
+  "Expected 'Language not found for EUR.' for EUR, cat"
+); 
 
-// no currency code
-console.log(currencyToLocale()); // returns 'Please provide a currency code.'
+// lowercase valid currency code
+console.assert(
+  currencyToLocale('usd') === 'en_US',
+  "Expected 'en_US' for usd"
+); 
+
+// uppercase valid language
+console.assert(
+  currencyToLocale('EUR', 'FR') === 'fr_FR',
+  "Expected 'fr_FR' for EUR, FR"
+);
+
+// lowercase valid currency code & uppercase valid language
+console.assert(
+  currencyToLocale('chf', 'IT') === 'it_CH',
+  "Expected 'it_CH' for chf, IT"
+); 
+
+// no input
+console.assert(
+  currencyToLocale() === 'Please provide a currency code.',
+  "Expected 'Please provide a currency code.' for no input"
+);
