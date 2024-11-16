@@ -1,4 +1,4 @@
-const currencyToLocale = require('../index.js'); 
+import currencyToLocale from '../index.js';
 
 // Example 1: Simple usage
 console.log("USD locale:", currencyToLocale('USD')); // Output: 'en_US'

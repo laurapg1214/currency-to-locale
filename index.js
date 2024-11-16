@@ -55,7 +55,7 @@ const currencyToLocale = (currencyCode, language) => {
         if (currencyCode === key) {
           // extract language from locale ID 
           for (const [k, localeID] of Object.entries(currencyLocales[key])) {
-            localeLang = localeID.split('_')[0];
+            let localeLang = localeID.split('_')[0];
             // match beginning of locale ID
             if (language === localeLang) {
               // return matching locale ID
@@ -71,8 +71,5 @@ const currencyToLocale = (currencyCode, language) => {
   return currencyLocales[currencyCode] || "Currency code not found.";
 }
 
-// CommonJS export
-module.exports = currencyToLocale;
-
 // ES module export
-// export default currencyToLocale;
+export default currencyToLocale;

@@ -1,4 +1,4 @@
-const currencyToLocale = require('../index.js');  
+import currencyToLocale from '../index.js';
 
 // valid currency code with no multiple languages
 console.assert(
