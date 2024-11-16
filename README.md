@@ -6,6 +6,8 @@ Converts currency codes to locale identifiers following format specified in IETF
 Currency codes initially compiled using Frankfurter's https://api.frankfurter.app/currencies. Additional currency code and locale id additions welcome.<br>
 For currency codes with multiple locales/languages, defaults have been selected.<br><br>
 <hr>
+currencyToLocale function takes two arguments: currency code (required) and language code (optional)
+<hr>
 *****************<br>
 INSTALLATION<br>
 *****************<br><br>
@@ -14,5 +16,7 @@ npm install currency-to-locale<br><br>
 *******************<br>
 USAGE EXAMPLES<br>
 *******************<br><br>
-<i>in progress...</i><br>
+To see examples of how to use the currencyToLocale function, run the following command:<br>
+```bash
+node examples/examples.js
 

@@ -12,7 +12,8 @@
     "url": "git+https://github.com/laurapg1214/currency-to-locale.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/test.js",
+    "examples": "node examples/examples.js"
   },
   "keywords": ["currency", "currency code", "international", "locale"],
   "author": "Laura Gates",
