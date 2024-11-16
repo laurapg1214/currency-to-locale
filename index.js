@@ -10,7 +10,7 @@ const currencyToLocale = (currencyCode, language) => {
     language = language.toLowerCase();
   };
   
-  const currencyLocaleMap = {
+  const currencyLocales = {
     "AUD": "en_AU",
     "BGN": "bg_BG",
     "BRL": "pt_BR",
@@ -44,46 +44,33 @@ const currencyToLocale = (currencyCode, language) => {
     "ZAR": "en_ZA"
   };
 
-  // check for Swiss Franc
-  if (currencyCode === "CHF") {
-    if (!language || language === "de") {
-      // return default German Swiss Franc
-      return currencyLocaleMap[currencyCode][0];
-    };
-    if (language === "fr") {
-      // return French Swiss Franc
-      return currencyLocaleMap[currencyCode][1];
-    };
-    if (language === "it") {
-      // return Italian Swiss Franc
-      return currencyLocaleMap[currencyCode][2];
-    };
-    return "Language not found for Swiss Franc."
-  };
+  if (language) {
+    // loop through currencyLocales object
+    for (const key in currencyLocales) {
+      // check for values that are multi-value arrays
+      if (
+        Array.isArray(currencyLocales[key]) && 
+        currencyLocales[key].length > 1
+      ) {
+        // match currency code
+        if (currencyCode === key) {
+          // extract language from locale ID 
+          for (const [k, localeID] of Object.entries(currencyLocales[key])) {
+            localeLang = localeID.split('_')[0];
+            // match beginning of locale ID
+            if (language === localeLang) {
+              // return matching locale ID
+              return localeID;
+            }
+          }
+          return (`Language not found for ${currencyCode}`);
+        }
+      }
+    }
+  }
 
-  // check for Euro
-  if (currencyCode === "EUR") {
-    if (!language || language === "de") {
-      // return default German Euro
-      return currencyLocaleMap[currencyCode][0];
-    };
-    if (language === "fr") {
-      // return French Euro
-      return currencyLocaleMap[currencyCode][1];
-    };
-    if (language === "es") {
-      // return Spanish Euro
-      return currencyLocaleMap[currencyCode][2];
-    };
-    if (language === "it") {
-      // return Italian Euro
-      return currencyLocaleMap[currencyCode][3];
-    };
-    return "Language not found for Euro."
-  };
-
-  return currencyLocaleMap[currencyCode] || "Currency code not found.";
-};
+  return currencyLocales[currencyCode] || "Currency code not found.";
+}
 
 // CommonJS export
 module.exports = currencyToLocale;
