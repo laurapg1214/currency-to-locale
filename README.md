@@ -6,7 +6,10 @@ Converts currency codes to locale identifiers following format specified in IETF
 Currency codes initially compiled using Frankfurter's https://api.frankfurter.app/currencies. Additional currency code and locale id additions welcome.<br>
 For currency codes with multiple locales/languages, defaults have been selected.<br><br>
 <hr>
-currencyToLocale function takes two arguments: currency code (required) and language code (optional)
+currencyToLocale function takes two arguments: currency code (required) and language code (optional)<br>
+invalid input types converted to strings<br>
+currency codes converted to uppercase; language codes converted to lowercase<br>
+support for currency codes with multiple locales, e.g. EUR, using language codes to differentiate<br>
 <hr>
 *****************<br>
 INSTALLATION<br>
