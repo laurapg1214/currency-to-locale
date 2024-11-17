@@ -2,47 +2,47 @@ import currencyToLocale from '../index.js';
 
 // valid currency code with single locale ID
 console.assert(
-  currencyToLocale('USD') === 'en_US',
-  "Expected 'en_US' for USD"
+  currencyToLocale('USD') === 'en-US',
+  "Expected 'en-US' for USD"
 );
 
 // valid currency code with multiple locale IDs
 console.assert(
-  currencyToLocale('CHF', 'fr') === 'fr_CH',
-  "Expected 'fr_CH for CHF, fr"
+  currencyToLocale('CHF', 'fr') === 'fr-CH',
+  "Expected 'fr-CH for CHF, fr"
 ); 
 console.assert(
-    currencyToLocale('EUR', 'es') === 'es_ES',
-    "Expected 'es_ES' for EUR, es"
+    currencyToLocale('EUR', 'es') === 'es-ES',
+    "Expected 'es-ES' for EUR, es"
 ); 
 
 // valid currency code with multiple locale IDs, no language code provided - default returned
 console.assert(
-  currencyToLocale('EUR') === 'de_DE',
-  "Expected 'de_DE' for EUR"
+  currencyToLocale('EUR') === 'de-DE',
+  "Expected 'de-DE' for EUR"
 )
 
 // valid currency code, irrelevant language code
 console.assert(
-  currencyToLocale('AUD', 'en') === 'en_AU',
-  "Expected 'en_AU' for AUD, en"
+  currencyToLocale('AUD', 'en') === 'en-AU',
+  "Expected 'en-AU' for AUD, en"
 ); 
 
 // valid currency code, irrelevant & invalid/not-found language code (ignores)
 console.assert(
   // language code not found in function's mapping
-  currencyToLocale('USD', 'xy') === 'en_US',
-  "Expected 'en_US' for USD, xy"
+  currencyToLocale('USD', 'xy') === 'en-US',
+  "Expected 'en-US' for USD, xy"
 );
 console.assert(
   // invalid language code length
-  currencyToLocale('USD', 'xyz') === 'en_US',
-  "Expected 'en_US' for USD, xyz"
+  currencyToLocale('USD', 'xyz') === 'en-US',
+  "Expected 'en-US' for USD, xyz"
 )
 console.assert(
   // invalid language code type
-  currencyToLocale('USD', 1) === 'en_US',
-  "Expected 'en_US' for USD, 1"
+  currencyToLocale('USD', 1) === 'en-US',
+  "Expected 'en-US' for USD, 1"
 )
 
 // invalid/not-found currency code
@@ -87,20 +87,20 @@ console.assert(
 
 // lowercase valid currency code
 console.assert(
-  currencyToLocale('usd') === 'en_US',
-  "Expected 'en_US' for usd"
+  currencyToLocale('usd') === 'en-US',
+  "Expected 'en-US' for usd"
 ); 
 
 // uppercase valid language code
 console.assert(
-  currencyToLocale('EUR', 'FR') === 'fr_FR',
-  "Expected 'fr_FR' for EUR, FR"
+  currencyToLocale('EUR', 'FR') === 'fr-FR',
+  "Expected 'fr-FR' for EUR, FR"
 );
 
 // lowercase valid currency code & uppercase valid language code
 console.assert(
-  currencyToLocale('chf', 'IT') === 'it_CH',
-  "Expected 'it_CH' for chf, IT"
+  currencyToLocale('chf', 'IT') === 'it-CH',
+  "Expected 'it-CH' for chf, IT"
 ); 
 
 // no input

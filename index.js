@@ -14,37 +14,37 @@ const currencyToLocale = (currencyCode, languageCode) => {
   currencyCode = currencyCode.toUpperCase();
   
   const currencyLocales = {
-    "AUD": "en_AU",
-    "BGN": "bg_BG",
-    "BRL": "pt_BR",
-    "CAD": "en_CA", 
-    "CHF": ["de_CH", "fr_CH", "it_CH"], // multiple locales array
-    "CNY": "zh_CN",
-    "CZK": "cs_CZ",
-    "DKK": "da_DK",
-    "EUR": ["de_DE", "fr_FR", "es_ES", "it_IT"], // multiple locales array
-    "GBP": "en_GB",
-    "HKD": "zh_HK",
-    "HUF": "hu_HU",
-    "IDR": "id_ID",
-    "ILS": "he_IL",
-    "INR": "en_IN",
-    "ISK": "is_IS",
-    "JPY": "ja_JP",
-    "KRW": "ko_KR",
-    "MXN": "es_MX",
-    "MYR": "ms_MY",
-    "NOK": "no_NO",
-    "NZD": "en_NZ",
-    "PHP": "en_PH",
-    "PLN": "pl_PL",
-    "RON": "ro_RO",
-    "SEK": "sv_SE",
-    "SGD": "en_SG",
-    "THB": "th_TH",
-    "TRY": "tr_TR",
-    "USD": "en_US",
-    "ZAR": "en_ZA"
+    "AUD": "en-AU",
+    "BGN": "bg-BG",
+    "BRL": "pt-BR",
+    "CAD": "en-CA", 
+    "CHF": ["de-CH", "fr-CH", "it-CH"], // multiple locales array
+    "CNY": "zh-CN",
+    "CZK": "cs-CZ",
+    "DKK": "da-DK",
+    "EUR": ["de-DE", "fr-FR", "es-ES", "it-IT"], // multiple locales array
+    "GBP": "en-GB",
+    "HKD": "zh-HK",
+    "HUF": "hu-HU",
+    "IDR": "id-ID",
+    "ILS": "he-IL",
+    "INR": "en-IN",
+    "ISK": "is-IS",
+    "JPY": "ja-JP",
+    "KRW": "ko-KR",
+    "MXN": "es-MX",
+    "MYR": "ms-MY",
+    "NOK": "no-NO",
+    "NZD": "en-NZ",
+    "PHP": "en-PH",
+    "PLN": "pl-PL",
+    "RON": "ro-RO",
+    "SEK": "sv-SE",
+    "SGD": "en-SG",
+    "THB": "th-TH",
+    "TRY": "tr-TR",
+    "USD": "en-US",
+    "ZAR": "en-ZA"
   };
 
   // multiple locale IDs
@@ -67,7 +67,7 @@ const currencyToLocale = (currencyCode, languageCode) => {
           if (currencyCode === key) {
             // extract language from locale ID 
             for (const [k, localeID] of Object.entries(currencyLocales[key])) {
-              let localeLang = localeID.split('_')[0];
+              let localeLang = localeID.split('-')[0];
               // match beginning of locale ID
               if (languageCode === localeLang) {
                 // return matching locale ID

@@ -4,14 +4,20 @@ import currencyToLocale from '../index.js';
 console.log(
     "Example 1: Simple usage"
 );
-console.log("USD:", currencyToLocale('USD')); // 'en_US'
+console.log("currencyCode: 'USD'\n     RETURNS:", currencyToLocale('USD')); // prints 'en-US'
 
 // Example 2: Currency code with multiple locale IDs
 console.log(
     "\nExample 2: Currency code with multiple locale IDs"
 );
-console.log("EUR with fr:", currencyToLocale('EUR', 'fr')); // 'fr_FR'
-console.log("EUR with es:", currencyToLocale('EUR', 'es')); // 'es_ES'
+console.log(
+    "currencyCode: 'EUR', languageCode: 'fr'\n     RETURNS:", 
+    currencyToLocale('EUR', 'fr')
+); // prints 'fr-FR'
+console.log(
+    "currencyCode: 'EUR', languageCode: 'es'\n     RETURNS:", 
+    currencyToLocale('EUR', 'es')
+); // prints 'es-ES'
 
 // Example 3: Currency code with multiple locale IDs, no language code provided 
 // (default locale ID returned)
@@ -19,7 +25,10 @@ console.log(
     "\nExample 3: Currency code with multiple locale IDs, " +
     "no language code provided (default locale ID returned)"
 );
-console.log("EUR with no language code:", currencyToLocale('EUR')); // 'de_DE'
+console.log(
+    "currencyCode: 'EUR', no language code\n     RETURNS:", 
+    currencyToLocale('EUR')
+); // prints 'de-DE'
 
 // Example 4: Currency code with only one locale ID 
 // (language code ignored if provided)
@@ -28,69 +37,77 @@ console.log(
     "(language code ignored if provided)"
 );
 console.log(
-    "HKD with de (incorrect language code for HKD, but ignored):", 
-    currencyToLocale('HKD', 'de')
-); // 'zh_HK'
+    "currencyCode: 'HKD', languageCode: 'de'\n     RETURNS:", 
+    currencyToLocale('HKD', 'de'),
+    "(incorrect language code for HKD, but ignored)"
+); // prints 'zh-HK'
 console.log(
-    "HKD with xyz (invalid language code, but ignored):", 
-    currencyToLocale('HKD', 'xyz')
-); // 'zh_HK'
+    "currencyCode: 'HKD', languageCode: 'xyz'\n     RETURNS:", 
+    currencyToLocale('HKD', 'xyz'),
+    "(invalid language code, but ignored)"
+); // prints 'zh-HK'
 console.log(
-    "HKD with 1 (invalid language code type, but ignored):", 
-    currencyToLocale('HKD', 1)
-); // 'zh_HK'
+    "currencyCode: 'HKD', languageCode: 1\n     RETURNS:", 
+    currencyToLocale('HKD', 1),
+    "(invalid language code type, but ignored)"
+); // prints 'zh-HK'
 
 // Example 5: Improperly formatted currency or language code (accepted)
 console.log(
     "\nExample 5: Improperly formatted currency or language code (accepted)"
 );
 console.log(
-    "Lowercase 'jpy' currency code:", 
-    currencyToLocale('jpy')
-); // 'ja_JP'
+    "currencyCode: 'jpy'\n     RETURNS:", 
+    currencyToLocale('jpy'),
+    "(handles improper formatting: lowercase currency code)"
+); // prints 'ja-JP'
 console.log(
-    "Uppercase 'IT' language code:", 
-    currencyToLocale('CHF', 'IT')
-); // 'it_CH'
+    "currencyCode: 'CHF', languageCode: 'IT'\n     RETURNS:", 
+    currencyToLocale('CHF', 'IT'),
+    "(handles improper formatting: uppercase language code)"
+); // prints 'it-CH'
 
 // Example 6: Invalid or not-found currency code
 console.log(
     "\nExample 6: Invalid currency code"
 );
 console.log(
-    "Currency code 1 (number):", 
+    "currencyCode: 1\n     RETURNS:", 
     currencyToLocale(1)
-); // 'Please provide a valid currency code.'
+); // prints 'Please provide a valid currency code.'
 console.log(
-    "Currency code 'ABCD' (not 3-character):", 
+    "currencyCode: 'ABCD' (not 3-character)\n     RETURNS:", 
     currencyToLocale('ABCD')
-); // 'Please provide a valide currency code.'
+); // prints 'Please provide a valide currency code.'
 console.log(
-    "Currency code 'XYZ':", 
+    "currencyCode 'XYZ'\n     RETURNS:", 
     currencyToLocale('XYZ'), 
     "(currency code might be valid, just missing from function's mapping)"
-); // 'Currency code not found.'
+); // prints 'Currency code not found.'
 
 // Example 7: Invalid or not-found language code with valid currency code
 console.log(
     "\nExample 7: Invalid or not-found language code with valid currency code"
 );
 console.log(
-    "Language code 1 (number) with currency code 'EUR':", 
+    "currencyCode: 'EUR', languageCode: 1\n     RETURNS:", 
     currencyToLocale('EUR', 1)
-); // 'Please provide a valid language code.'
+); // prints 'Please provide a valid language code.'
 console.log(
-    "Language code 'xyz' (not 2-character) with currency code 'EUR':", 
+    "currencyCode: 'EUR', languageCode: 'xyz' (not 2-character)\n     RETURNS:", 
     currencyToLocale('EUR', 'xyz')
-); // 'Please provide a valid language code.'
+); // prints 'Please provide a valid language code.'
 console.log(
-    "Language code 'zh' with currency code 'EUR':", 
+    "currencyCode: 'EUR', languageCode 'zh'\n     RETURNS:", 
     currencyToLocale('EUR', 'zh'), 
     "(language code might be valid, just missing from function's mapping)"
-); // 'Language code not found for EUR.'
+); // prints 'Language code not found for EUR.'
 
 // Example 8: No input
 console.log(
     "\nExample 8: No input"
 );
-console.log(currencyToLocale()); // 'Please provide a currency code.'
+console.log(
+    "No input\n     RETURNS:", 
+    currencyToLocale()
+); // prints 'Please provide a currency code.'

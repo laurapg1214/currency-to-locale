@@ -50,17 +50,17 @@ It returns the corresponding locale identifier (e.g. "en-US", "de-DE").
 **Examples**
 
 // Example 1: Simple usage
-const locale = currencyToLocale('USD'); // 'en_US'
+const locale = currencyToLocale('USD'); // returns 'en-US'
 
 // Example 2: Currency code with multiple locales, returns locale based on language code provided
-const locale = currencyToLocale('EUR', 'fr'); // 'fr_FR'
+const locale = currencyToLocale('EUR', 'fr'); // returns 'fr-FR'
 
 // Example 3: Currency code with multiple locales, no language code provided (default locale returned)
-console.log("EUR with no language code:", currencyToLocale('EUR')); // 'de_DE'
+console.log("EUR with no language code:", currencyToLocale('EUR')); // returns 'de-DE'
 
 // Example 4: Invalid or not-found currency code
-const locale = currencyToLocale('XYZ'); // 'Currency code not found.'
-const locale = currencyToLocale(1); // 'Please provide a valid currency code.'
+const locale = currencyToLocale('XYZ'); // returns 'Currency code not found.'
+const locale = currencyToLocale(1); // returns 'Please provide a valid currency code.'
 
 
 **Run examples**
