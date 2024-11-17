@@ -1,15 +1,19 @@
-```markdown
 # currency-to-locale
+
+### **Author**
+This project was built and is maintained by Laura Gates, [https://github.com/laurapg1214](https://github.com/laurapg1214).
+
+Feel free to reach out with any questions or contributions!
 
 ### **Description**
 
 Converts currency codes to locale identifiers following format specified in IETF BCP 47 standard, comprised of a two-letter ISO 639-1 language code and ISO 3166-1 alpha-2 country code.
 
+For currency codes with multiple locales/language codes, defaults have been selected.
+
 Currency codes initially compiled using Frankfurter's [https://api.frankfurter.app/currencies](https://api.frankfurter.app/currencies).
 
 Additional currency code and locale ID additions are welcome; please see "Contributing" section below.
-
-For currency codes with multiple locales/language codes, defaults have been selected.
 
 ---
 
@@ -30,24 +34,11 @@ To use the `currencyToLocale` function in your project, import it as follows:
 
 ```javascript
 import currencyToLocale from currency-to-locale;
+```
 
-// Example 1: Simple usage
-const locale = currencyToLocale('USD'); // 'en_US'
-
-// Example 2: Currency code with multiple locales
-const locale = currencyToLocale('EUR', 'fr'); // 'fr_FR'
-
-// Example 3: Currency code with multiple locales, no language code provided - default locale returned
-console.log("EUR with no language code:", currencyToLocale('EUR')); // 'de_DE'
-
-// Example 4: Lowercase currency code
-const locale = currencyToLocale('jpy'); // 'ja_JP'
-
-// Example 5: Invalid currency code
-const locale = currencyToLocale('XYZ'); // 'Currency code not found.'
-
-// Example 6: No input
-const locale = currencyToLocale(); // 'Please provide a currency code.'
+**Function usage: currencyToLocale**
+```javascript
+currencyToLocale(currencyCode, languageCode)
 ```
 
 The `currencyToLocale` function accepts two arguments:
@@ -56,8 +47,25 @@ The `currencyToLocale` function accepts two arguments:
 
 It returns the corresponding locale identifier (e.g. "en-US", "de-DE").
 
-**Run example**
-To see examples in action, you can run the following command:
+**Examples**
+
+// Example 1: Simple usage
+const locale = currencyToLocale('USD'); // 'en_US'
+
+// Example 2: Currency code with multiple locales, returns locale based on language code provided
+const locale = currencyToLocale('EUR', 'fr'); // 'fr_FR'
+
+// Example 3: Currency code with multiple locales, no language code provided (default locale returned)
+console.log("EUR with no language code:", currencyToLocale('EUR')); // 'de_DE'
+
+// Example 4: Invalid or not-found currency code
+const locale = currencyToLocale('XYZ'); // 'Currency code not found.'
+const locale = currencyToLocale(1); // 'Please provide a valid currency code.'
+
+
+**Run examples**
+
+To see these and additional examples in action, run the following command:
 
 ```bash
 node examples/examples.js
@@ -86,6 +94,6 @@ I appreciate your contributions and look forward to collaborating with you!
 ### **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
+
 
 
