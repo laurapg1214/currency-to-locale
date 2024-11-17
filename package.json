@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/laurapg1214/currency-to-locale.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
   "scripts": {
     "test": "node tests/test.js",
     "examples": "node examples/examples.js"
