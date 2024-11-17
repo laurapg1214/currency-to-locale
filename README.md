@@ -33,7 +33,7 @@ This will add the package to your project's dependencies.
 To use the `currencyToLocale` function in your project, import it as follows:
 
 ```javascript
-import currencyToLocale from currency-to-locale;
+import currencyToLocale from 'currency-to-locale';
 ```
 
 **Function usage: currencyToLocale**
