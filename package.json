@@ -4,8 +4,8 @@
   "description": "Converts currency codes to locale identifiers following format specified in IETF BCP 47 standard",
   "main": "index.js",
   "exports": {
-    "require": "./index.cjs",
-    "default": "./index.mjs"
+    "require": "./index.js",
+    "default": "./index.js"
   },
   "type": "module",
   "repository": {
